@@ -1,5 +1,6 @@
 %%% Week 03 - Assignment: Matrix Arithmetic
 % Matrix arithmetic practice.
+
 % Given a Matrix 'A':
 % 1. Create a row vector of 1's that has same number of elements as A has rows. 
 % 2. Create a column vector of 1's that has the same number of elements as A has columns. 
