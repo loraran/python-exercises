@@ -1,4 +1,4 @@
-# CodingExercises
+# 💻 CodingExercises 
 Private repository with coding exercises from various sources:
 
 - **MATLAB**
