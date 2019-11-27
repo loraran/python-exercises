@@ -1,5 +1,5 @@
 # CodingExercises
-Coding exercises from various sources:
+Private repository with coding exercises from various sources:
 
 - **MATLAB**
   - _Introduction to Programming with MATLAB_ - Vanderbilt University [[Coursera](https://www.coursera.org/learn/matlab)]
