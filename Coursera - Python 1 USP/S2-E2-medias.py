@@ -1,4 +1,5 @@
 # Exercício 1 - medias.py
+
 # Faça um programa em Python que receba quatro notas, calcule e imprima a média aritmética. 
 
 nota1 = input('Digite a primeira nota: ');
