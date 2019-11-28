@@ -1,4 +1,5 @@
 # Semana 02 - Exercício Adicional 3 - segundos.py
+
 # Faça um programa em Python que, dada a quantidade de segundos, "quebre" esse valor em dias, horas, minutos e segundos.
 
 fullseg = input('Por favor, entre com o número de segundos que você deseja converter: ');
