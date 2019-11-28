@@ -1,4 +1,4 @@
-# Exercício 1 - fatura.py
+# Semana 02 - Exercício Adicional 1 - fatura.py
 
 nome = input('Digite o nome do cliente: ');
 diavenc = input('Digite o dia de vencimento: ');
