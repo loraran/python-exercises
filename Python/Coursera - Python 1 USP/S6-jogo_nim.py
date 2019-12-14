@@ -7,7 +7,6 @@
 # Para garantir que o computador ganhe sempre, é preciso considerar dois cenários possíveis para o início do jogo:
 #  - Se 'n' é múltiplo de (m+1), o computador deve ser "generoso" e convidar o jogador a iniciar a partida com a frase "Você começa".
 #  - Caso contrário, o computador toma a inciativa de começar o jogo.
-
 # Uma vez iniciado o jogo, a estratégia do computador para ganhar consiste em deixar sempre um número de peças que seja múltiplo de (m+1) ao jogador.
 # Caso isso não seja possível, deverá tirar o número máximo de peças possíveis.
 
