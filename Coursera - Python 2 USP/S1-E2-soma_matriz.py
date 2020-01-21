@@ -1,7 +1,7 @@
 # Semana 01 - Exercício 2 - soma_matriz.py
 
 def soma_matrizes(m1,m2):
-    ''' (list,list) -> soma_matrizes()
+    ''' (list,list) -> matriz/bool
     A função recebe duas matrizes, m1 e m2, e devolve uma matriz que
     represente sua soma CASO as matrizes tenham dimensões iguais.
     Caso contrário, a função deve devolver o booleano False.
@@ -25,7 +25,7 @@ def soma_matrizes(m1,m2):
 
 # Importando dimensoes_matriz.py...
 def dimensoes(matriz):
-    '''(matriz) -> dimensoes()
+    '''(matriz) -> string
     A função dimensoes() retorna as dimensões (linhas e colunas) de uma matriz
     inserida pelo usuário, no formato 'iXj'.
     Exemplo: dimensoes([[1, 2, 3] , [4, 5, 6]]) = 2X3
@@ -46,7 +46,7 @@ def dimensoes(matriz):
 
 # Importando matriz.py...
 def matrix(num_lines,num_columns,value):
-    '''(int,int,float) -> matrix (lista de listas)
+    '''(int,int,float) -> matriz (lista de listas)
     A função matrix() cria e retorna uma matriz com um dado número de
     linhas e colunas, em que cada elemento é igual a um dado valor.
     '''
