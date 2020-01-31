@@ -213,9 +213,10 @@ def middle(lin,col):  # caso 9 (lin,col) = (lin,col)
         num_bombas = num_bombas + 1
     return num_bombas
 
-# Funções Complementares ------------------------------------------------------
 
-def matrix(num_lines,num_columns):
+# Função gera_campo() e Auxiliares --------------------------------------------
+
+def gera_campo(num_lines,num_columns):
     '''(int,int,float) -> matriz (lista de listas)
     A função matrix() cria e retorna uma matriz com um dado número de
     linhas e colunas, com posições 0 e -1 escolhidas aleatoriamente.
@@ -224,10 +225,48 @@ def matrix(num_lines,num_columns):
     for i in range(num_lines):
         line = []  # lista vazia
         for j in range(num_columns):  # para cada linha i, adicionamos j colunas
-            line.append(random.randint(-1,0))            
+            line.append(random.choices([-1,0],[7,10],k=1)[0])            
         matrix.append(line)  # adiciona cada linha à matriz inicial
-
     return matrix
+
+def imprime_matriz_oculta(matriz):
+    '''(list(list)) -> imprime_matriz()
+    A função recebe o campo minado e o imprime como uma matriz de 'X'.
+    '''
+    print()
+    print('    \\COL ',end='')
+    for j in range(len(matriz[0])):  # para cada coluna da matriz
+        print('[',j,'] \t ',end='')
+    print('\n  LIN\\')
+
+    for i in range(len(matriz)):  # número de linhas
+        print('  [',i,']\t ',end='')
+        for j in range(len(matriz[i])):  # número de colunas
+            print('  X',end='\t')
+            if not j == len(matriz[i]) - 1:
+                print(' ',end='')
+        print('\n')
+
+def imprime_matriz_resposta(matriz):
+    '''(list(list)) -> imprime_matriz()
+    A função recebe o campo minado e o imprime como solução, linha por linha.
+    '''
+    print()
+    print(' SOLUÇÃO:\n')
+    print('    \\COL ',end='')
+    for j in range(len(matriz[0])):  # para cada coluna da matriz
+        print('[',j,'] \t ',end='')
+    print('\n  LIN\\')
+
+    for i in range(len(matriz)):  # número de linhas
+        print('  [',i,']\t ',end='')
+        for j in range(len(matriz[i])):  # número de colunas
+            print(' ',matriz[i][j],end='\t')
+            if not j == len(matriz[i]) - 1:
+                print(' ',end='')
+        print('\n')
+
+# Funções Complementares ------------------------------------------------------
 
 def dimensoes(matriz):
     '''(matriz) -> string
@@ -247,6 +286,19 @@ def dimensoes(matriz):
     
     return (str(i)+'X'+str(j))  # formato iXj
 
+def imprime_matriz(matriz):
+    '''(list(list)) -> imprime_matriz()
+    A função recebe uma matriz como parâmetro e a imprime linha por linha.
+    '''
+    print()
+    for i in range(len(matriz)):  # número de linhas
+        print(' ',end='')
+        for j in range(len(matriz[i])):  # número de colunas
+            print(matriz[i][j],end ='\t')
+            if not j == len(matriz[i]) - 1:
+                print(' ',end='')
+        print()
+
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 
@@ -257,12 +309,23 @@ def main():
     num_lines = int(input('  No. de linhas: '))
     num_columns = int(input('  No. de colunas: '))
     while num_lines <= 0 or num_columns <= 0:
-        print('   ⚠ A dimensão da matriz deve ser de, no mínimo, 1X1.')
+        print('   ⚠ A dimensão da matriz deve ser, no mínimo, 1X1.')
         num_lines = int(input('  No. de linhas: '))
         num_columns = int(input('  No. de colunas: '))
 
-    A = matrix(num_lines,num_columns)
-    print(A)
+    campo_minado = gera_campo(num_lines,num_columns)
+    imprime_matriz_oculta(campo_minado)
+
+    partida = True
+    while partida:
+
+    print('Fim de jogo!')
+
+    
+    
+    #imprime_matriz(campo_minado)
+    #imprime_matriz_oculta(campo_minado)
+    #imprime_matriz_resposta(campo_minado)
     
     
 dim = dimensoes(A)  # formato 'iXj'
