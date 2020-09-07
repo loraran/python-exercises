@@ -64,3 +64,14 @@ function [indices] = saddle(M)
             end
         end
     end
+    
+    
+    
+% create an interesting surface
+%[X,Y] = meshgrid(-2:0.5:2,-1:0.5:1); Z = (X.^2-Y.^2)'
+%Z = [4 2 3 4 4 3 2 1]
+%Z = [1; 2; 3; 4; 4; 3; 2; 1]
+%Z = [1 2 3 5 4 3 2 1 ; 2 3 4 5 4 3 2 1]
+Z = zeros(randi([3 6]),randi([3 6]))
+% find saddle points
+indices = saddle(Z)
