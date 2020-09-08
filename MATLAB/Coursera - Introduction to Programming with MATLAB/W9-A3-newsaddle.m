@@ -49,29 +49,49 @@ function [indices] = saddle(M)
                     biggest = [biggest ; M(i,j),i,j];
                 end
             end
-            biggest
+            %biggest
             
-            smallest = M(1,biggest(3)); % suppose the first element is the smallest of its column
-            for k = 2:numel(M(:,1))  % # rows
-                if M(k,biggest(3)) < smallest
-                    smallest = [M(k,biggest(3)),k,biggest(3)];
+            bigsize = size(biggest);
+            if bigsize(1) == 1  % if there's only one saddle point candidate
+                %smallest = M(1,biggest(3));  % suppose the first element is the smallest of its column
+                smallest = [M(1,biggest(3)),1,biggest(3)];  % suppose the first element is the smallest of its column
+                for k = 2:numel(M(:,1))  % # rows
+                    if M(k,biggest(3)) < smallest(1)
+                        smallest = [M(k,biggest(3)),k,biggest(3)];
+                    end
                 end
-            end
-            %smallest
-
-            if biggest(1) == smallest(1)
-                indices = [indices ; biggest(:,2),biggest(:,3)];
+                %smallest
+                if biggest(1) == smallest(1)
+                    indices = [indices ; biggest(:,2),biggest(:,3)];
+                end
+            else  % bigsize > 1 : if there's more than one saddle point candidate (more than one "biggest value")
+                for i = 1:bigsize(1)
+                    %smallest = M(1,biggest(i,3));  % suppose the first element is the smallest of its column
+                    smallest = [M(1,biggest(i,3)),1,biggest(i,3)];  % suppose the first element is the smallest of its column
+                    for k = 2:numel(M(:,1))  % # rows
+                        if M(k,biggest(i,3)) < smallest(1)
+                            smallest = [M(k,biggest(i,3)),k,biggest(i,3)];
+                        elseif M(k,biggest(i,3)) == smallest(1)
+                            smallest = [smallest ; M(k,biggest(i,3)),k,biggest(i,3)];
+                        end
+                    end
+                    
+                    if biggest(i,1) == smallest(1,1)
+                        indices = [indices ; biggest(i,2),biggest(i,3)];
+                    end
+                    %indices
+                end
             end
         end
     end
-    
     
     
 % create an interesting surface
 %[X,Y] = meshgrid(-2:0.5:2,-1:0.5:1); Z = (X.^2-Y.^2)'
 %Z = [4 2 3 4 4 3 2 1]
 %Z = [1; 2; 3; 4; 4; 3; 2; 1]
-%Z = [1 2 3 5 4 3 2 1 ; 2 3 4 5 4 3 2 1]
-Z = zeros(randi([3 6]),randi([3 6]))
+%Z = [1 2 3 5 5 3 2 1 ; 2 3 4 5 4 3 2 1]
+%Z = zeros(randi([3 3]),randi([3 3]))
+%Z = randi(100, 5)
 % find saddle points
 indices = saddle(Z)
