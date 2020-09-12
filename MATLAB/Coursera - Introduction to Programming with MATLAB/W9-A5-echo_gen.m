@@ -25,3 +25,31 @@
 %   sound(y,Fs) % outputs sound
 
 % (Note that we are assuming mono audiofiles. If the audio data has two columns, it is a stereo file, so use only one column of the data when testing your file.)
+
+function [output] = echo_gen(input,fs,delay,amp)
+    if numel(input(1,:)) > 1  % if the input is a stereo audio file, use only one column
+        input = input(:,1);
+    end
+
+    if delay == 0 && amp == 0
+        output = input;  % input == y
+    else
+        % amplify the audio
+        echoed = input*amp;
+        
+        % determine the starting point of delay using sampling rate: 1 * Fs = 1 sec of data
+        startecho = round(delay*fs);  % startecho is also the extra duration (extra samples) of the audio file
+        
+        % new audio file extended by the echo
+        input = [input ; zeros(startecho,1)];  % newlength = numel(input(:,1)) + startecho
+        echoed = [zeros(startecho,1) ; echoed];
+        
+        notnorm_output = input + echoed;
+        
+        if max(notnorm_output) > 1
+            norm_output = notnorm_output/(max(notnorm_output));
+            output = norm_output;
+        else
+            output = notnorm_output;
+        end
+    end
