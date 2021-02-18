@@ -3,8 +3,10 @@
 # Receba 3 números inteiros na entrada e imprima 'crescente' se eles forem dados em ordem crescente.
 # Caso contrário, imprima 'não está em ordem crescente'.
 
-numero = int(input('Informe um número: '));
-if (numero % 3 == 0) and (numero % 5 == 0):
-    print('FizzBuzz');
+num1 = int(input('Informe um número: '));
+num2 = int(input('Informe outro número: '));
+num3 = int(input('Informe mais um número: '));
+if (num1 < num2) and (num2 < num3):
+    print('crescente');
 else:
-    print(numero);
+    print('não está em ordem crescente');
